@@ -1,4 +1,4 @@
-package com.example.cineteca2;
+package com.example.cineteca2.Adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -20,31 +20,17 @@ public class FilmeAdapter extends ArrayAdapter<Filme> {
         super(context, 0, filmes);
         this.context = context;
     }
-
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false);
         }
-
         Filme filme = getItem(position);
-
         if (filme != null) {
             TextView textView = convertView.findViewById(android.R.id.text1);
             textView.setText(filme.getTitulo() + " (" + filme.getAno() + ")");
         }
-
         return convertView;
-    }
-
-    public void atualizarLista(List<Filme> filmes) {
-        clear();
-        addAll(filmes);
-        notifyDataSetChanged();
-    }
-    public void adicionarFilme(Filme filme) {
-        add(filme);
-        notifyDataSetChanged();
     }
 }

@@ -6,7 +6,5 @@ import java.util.List;
 
 public interface IFilmeDAO {
     long adicionarFilme(Filme filme);
-    List<Filme> getTodosFilmes();
-    Filme getFilmePorId(long filmeId);
 
 }

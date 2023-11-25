@@ -11,7 +11,6 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
     public SQLiteDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
-
     @Override
     public void onCreate(SQLiteDatabase db) {
         String createTable = "CREATE TABLE usuario (" +
@@ -37,7 +36,6 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
         Log.i("MYSQLITE", "TABELA PLAYLIST CRIADA COM SUCESSO ");
         db.execSQL(createTablePlaylist);
     }
-
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         if  (i < 4) {
@@ -47,8 +45,7 @@ public class SQLiteDatabaseHelper extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL("CREATE TABLE IF NOT EXISTS playlist (id INTEGER PRIMARY KEY AUTOINCREMENT, usuario_id INTEGER, filme_id INTEGER, FOREIGN KEY(filme_id) REFERENCES filme(id), FOREIGN KEY(usuario_id) REFERENCES usuario(id))");
         }
         if (i < 8) {
-            // Adicione a instrução SQL para modificar a tabela playlist (por exemplo, adicionar a coluna usuario_id)
-            sqLiteDatabase.execSQL("ALTER TABLE playlist ADD COLUMN usuario_id INTEGER");
+          sqLiteDatabase.execSQL("ALTER TABLE playlist ADD COLUMN usuario_id INTEGER");
         }
         if (i<9){
             sqLiteDatabase.execSQL("ALTER TABLE playlist ADD COLUMN filme_id");
